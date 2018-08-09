@@ -54,9 +54,19 @@ But nine times out of ten, they'll say, "Oh, oh, uh-huh" And they're very please
 
     <script src="lib/compromise.min.js"></script>
     <script>
+      var lexicon={
+        slyer:'Comparative'
+      }
       var el = document.getElementById('text')
       function parse(text){
-        var doc = nlp(text)
+        var doc = nlp(text, lexicon)
+        doc.match('#Quotation+').lump()
+
+        doc.match('#Value+ #Noun').ifNo('#Comma').tag('#Number')
+        doc.match('#Value (and|or) #Value').ifNo('#Comma').tag('#Number')
+        doc.match('#Value').tag('#Number')
+
+        doc.match('more [#Adjective]').ifNo('#Comma').tag('#Comparative')
         document.getElementById('output').innerHTML= doc.out('html')
       }
       el.onkeyup=function(e){parse(e.target.value)}

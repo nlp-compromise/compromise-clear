@@ -1,3 +1,18 @@
-.nlNoun {
-  color: #cc7066;
+.nl-Singular {
+  color: $black;
+  font-weight: 500;
+}
+.nl-Quotation {
+  border-bottom: 1px solid #7f9c6c;
+  font-weight: 400;
+  clear: both;
+}
+.nl-Gerund {
+  color: #cc8a66;
+}
+.nl-Comparative {
+  color: #6accb2;
+}
+.nl-Number {
+  color: #69c;
 }
