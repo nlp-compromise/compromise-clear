@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>compromise-clear</title>
+    <link rel="stylesheet" href="builds/compromise-clear.css">
+    <link rel="stylesheet" href="lib/spencer.min.css">
+    <style>
+    .textarea{
+      font-size:0.7rem;
+      color:dimgrey;
+      border:1px solid lightgrey;
+      border-radius:3px;
+      width:25rem;
+      height:17rem;
+    }
+    #output{
+      margin-top:3rem;
+      max-width:40rem;
+      border-left:1px solid dimgrey;
+      border-right:1px solid grey;
+      padding:2rem;
+    }
+    </style>
+  </head>
+  <body class="body">
+    <div class=" flex middle col">
+      <div class="red left f2 nudgeleft">
+        <a href="https://github.com/nlp-compromise/compromise-clear" class="link">compromise-clear</a>
+      </div>
+      <div class="brown italics f6 right">mike collins, from Apollo 11:</div>
+      <textarea id="text" class="textarea">
+I've had it with certain questions, and maybe the way they're asked.
+But I've gotten slyer. I've gotten more adept at just deflecting them. I mean, if someone says, you know, "What was it like up there?"
+
+You know, I've just written this fucking book telling em four hundred pages of what it was really like up there, and they say "Oh I loved your book! Now tell me: What was it really like up there?"
+Well, I learned to deflect that. It depends on their age. I mean, if it's a young kid, you just say, "Oh it was cool, man" - they say, "Was it?". "Oh, shit, yeah. Oh, it was cool."
+
+And they walk off. That's great. It's they want to hear the sound of their own voice, or they want to somehow interject with their own question or their own inquiry into the process. And that's alright. So I go by the age - I usually give em a one or two word answer, depending how old they are. And they usually - sometimes, though, they won't be satisfied with that, and they'll want to go on.
+
+But nine times out of ten, they'll say, "Oh, oh, uh-huh" And they're very pleased.
+      </textarea>
+      <div id="output"></div>
+
+      <div class="m5 meright f5 midgrey italics">
+        demo of <span class="darkgreen">css-styling</span> based on <span class="orange">grammar</span>
+        using <a href="https://github.com/spencermountain/compromise" class="red">nlp-compromise</a>.
+      </div>
+      <div class="m1 meright link">
+        <a href="https://github.com/nlp-compromise/compromise-clear">source</a>
+      </div>
+      <div class="space"></div>
+    </div>
+
+    <script src="lib/compromise.min.js"></script>
+    <script>
+      var el = document.getElementById('text')
+      function parse(text){
+        var doc = nlp(text)
+        document.getElementById('output').innerHTML= doc.out('html')
+      }
+      el.onkeyup=function(e){parse(e.target.value)}
+      parse(el.innerHTML)
+    </script>
+
+  </body>
+</html>
